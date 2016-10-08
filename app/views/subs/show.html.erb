@@ -1,0 +1,15 @@
+<%= render 'partials/logbutton' %>
+<h1> <%= @sub.name %></h1>
+<br>
+<div>
+<strong><%= User.find_by_id(@sub.moderator_id).username %></strong> is the moderator of this subreddit
+</div>
+<br><br>
+Description: <%= @sub.description %>
+<br>
+<%= button_to 'edit subreddit', edit_sub_url, method: :get %>
+<%= button_to 'submit post', new_sub_post_url(@sub.id), method: :get %>
+
+<% flash[:errors].try(:each) do |key,value| %>
+<%= key %>
+<% end %>

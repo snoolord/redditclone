@@ -1,0 +1,15 @@
+<%= render 'partials/logbutton' %>
+<h1>All Subreddits</h1>
+
+<br><br>
+
+<%  @subs.all.each do |sub| %>
+<%= link_to "#{sub.name}", sub_url(sub.id) %><br><br>
+<%  end  %>
+
+<br><br><br>
+<%= button_to 'Create new subreddit', new_sub_url, method: :get %>
+
+<% flash[:errors].try(:each) do |key,value| %>
+<%= key %>
+<% end %>

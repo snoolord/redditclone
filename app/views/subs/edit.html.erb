@@ -1,0 +1,3 @@
+<%= render 'partials/logbutton' %>
+<h1>Edit subreddit</h1>
+<%= render 'subs/form', sub: @sub, action: sub_url(@sub), method: :patch, status: 'r-edit!' %>

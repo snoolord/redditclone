@@ -1,0 +1,52 @@
+<h1> <%= status %></h1>
+
+<% if status == "Sign Up" %>
+  <% username_key = "user[username]" %>
+  <% password_key = "user[password]" %>
+  <% opposite = 'Log in' %>
+  <% opposite_action = new_session_url %>
+<% else %>
+  <% username_key = "session[username]" %>
+  <% password_key = "session[password]" %>
+  <% opposite = 'Sign Up' %>
+  <% opposite_action = new_user_url %>
+<% end %>
+<% unless logged_in? %>
+<%= button_to opposite, opposite_action, method: :get %>
+<% end %>
+<br>
+<% status == "Sign Up" ? username_key = "user[username]" : username_key = "session[username]"%>
+<% status == "Sign Up" ? password_key = "user[password]" : password_key = "session[password]"%>
+
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+<label> Username
+
+  <input
+    type = "text"
+    name = <%= username_key %>
+
+</label>
+
+
+<br><br>
+
+
+<label> Password
+
+  <input
+    type = "text"
+    name = <%= password_key %>
+
+</label>
+
+<br><br>
+<%= button_to status  %>
+
+</form>

@@ -1,0 +1,10 @@
+<h1> <%=button_to  'Home', subs_url, method: :get%>  </h1>
+
+
+
+
+<% if logged_in? %>
+<%=  button_to 'Log out', session_url, method: :delete %>
+<% else %>
+<%= button_to 'Log in', new_session_url, method: :get %>
+<% end %>

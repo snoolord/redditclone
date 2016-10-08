@@ -1,0 +1,30 @@
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="post[user_id]" value = <%= current_user.id  %>>
+<label> Post title
+
+  <input
+    type = "text"
+    name = post[title]
+    value="<%= post.title %>"
+</label>
+
+
+<br><br>
+
+
+<label> Description
+
+  <textarea name="post[content]"><%= post.content %></textarea>
+</label>
+
+<br><br>
+<%= button_to status  %>
+
+</form>
